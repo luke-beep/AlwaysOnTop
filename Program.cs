@@ -41,6 +41,12 @@ internal static class Program
     private const string ValidationError = "Please enter a valid handle";
     private const string AppName = "AlwaysOnTop";
     private const string Green = "green";
+    private const string Handle = "Handle";
+    private const string Title = "Title";
+    private const string Class = "Class";
+    private const string Error = "Error";
+    private const string Yes = "Yes";
+    private const string No = "No";
     private const int DefaultStringBuilderCapacity = 256;
     private const int DisplayRefreshDelay = 1000;
 
@@ -104,9 +110,9 @@ internal static class Program
             new SelectionPrompt<string>()
                 .Title($"Set {handle} to Always be on top?")
                 .PageSize(3)
-                .AddChoices("Yes", "No"));
+                .AddChoices(Yes, No));
 
-        var alwaysOnTop = choice == "Yes" ? HwndTopmost : HwndNotopmost;
+        var alwaysOnTop = choice == Yes ? HwndTopmost : HwndNotopmost;
         return alwaysOnTop;
     }
 
@@ -123,9 +129,9 @@ internal static class Program
     private static Table CreateWindowDataTable()
     {
         var table = new Table().Centered().Border(TableBorder.Rounded);
-        table.AddColumn("Handle");
-        table.AddColumn("Title");
-        table.AddColumn("Class");
+        table.AddColumn(Handle);
+        table.AddColumn(Title);
+        table.AddColumn(Class);
 
         foreach (var window in WindowData)
         {
